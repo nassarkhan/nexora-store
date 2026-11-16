@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Premium SaaS dashboard templates and digital products by Nassar Uminallah Khan — Nexora Pro React SaaS Dashboard Template ($49 / $149), Luxury Habit Tracker PDF + App ($5), the 32 3D Website Prompts Ebook ($19) and the 2027 Ultimate Planner. Secure checkout and instant download via Gumroad." />
+    <meta name="keywords" content="react dashboard, saas dashboard, admin template, react template, tailwind dashboard, typescript, dashboard template, habit tracker, habit tracker pdf, discipline planner, 3d website, website prompts, ai website, claude prompts, cursor prompts, v0 prompts, web design, landing page, smooth scrolling" />
+    <meta property="og:title" content="Nassar Khan — Digital Products &amp; Templates" />
+    <meta property="og:description" content="Nexora Pro React SaaS dashboard template, Luxury Habit Tracker, 32 3D Website Prompts Ebook and the 2027 Ultimate Planner — real prices, secure checkout via Gumroad." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:," />
+    <title>Nassar Khan — Digital Products &amp; Templates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        --ink:#eef7f5;
+        --ink-soft:rgba(233,246,243,.72);
+        --ink-faint:rgba(233,246,243,.52);
+        --glass:rgba(255,255,255,.07);
+        --glass-strong:rgba(255,255,255,.11);
+        --glass-edge:rgba(255,255,255,.16);
+        --glass-edge-soft:rgba(255,255,255,.09);
+        --emerald:#34d399;
+        --emerald-deep:#10b981;
+        --teal:#2dd4bf;
+        --cyan:#38bdf8;
+        --amber:#fbbf24;
+        --shadow:0 24px 60px rgba(0,8,16,.45);
+        --radius-lg:26px;
+        --radius-md:18px;
+        --nav-h:72px;
+      }
+      *{ box-sizing:border-box; }
+      html{ scroll-behavior:smooth; }
+      html.lenis, html.lenis body{ height:auto; }
+      .lenis.lenis-smooth{ scroll-behavior:auto !important; }
+      body{
+        margin:0;
+        font-family:"Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+        color:var(--ink);
+        background:#020b14;
+        overflow-x:hidden;
+        -webkit-font-smoothing:antialiased;
+      }
+      /* ---------- Liquid background ---------- */
+      .bg{
+        position:fixed; inset:0; z-index:-2; overflow:hidden;
+        background:
+          radial-gradient(1100px 620px at 85% -10%, rgba(45,212,191,.20), transparent 60%),
+          radial-gradient(900px 700px at -10% 30%, rgba(16,185,129,.14), transparent 60%),
+          linear-gradient(158deg, #07332e 0%, #052231 38%, #03101f 68%, #020617 100%);
+      }
+      .blob{
+        position:absolute; border-radius:50%;
+        will-change:transform;
+      }
+      .blob-a{ width:560px; height:560px; left:-140px; top:-160px;
+        background:radial-gradient(circle at 35% 35%, rgba(94,234,212,.34), rgba(45,212,191,.10) 55%, transparent 72%); }
+      .blob-b{ width:640px; height:640px; right:-200px; top:12%;
+        background:radial-gradient(circle at 40% 40%, rgba(56,189,248,.26), rgba(14,116,144,.08) 55%, transparent 72%); }
+      .blob-c{ width:520px; height:520px; left:32%; bottom:-260px;
+        background:radial-gradient(circle at 40% 40%, rgba(52,211,153,.24), rgba(4,120,87,.07) 55%, transparent 72%); }
+      .bg::after{
+        content:""; position:absolute; inset:0;
+        background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+        background-size:26px 26px;
+        mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), transparent 55%);
+        -webkit-mask-image:linear-gradient(to bottom, rgba(0,0,0,.7), transparent 55%);
+      }
+      ::selection{ background:rgba(52,211,153,.4); }
+      a{ color:inherit; }
+      img, svg{ display:block; }
+      .wrap{ width:min(1200px, 100% - 40px); margin-inline:auto; }
+      /* Grid/flex children must be allowed to shrink below their min-content
+         (the CSS dashboard mock is the widest) — prevents phone overflow. */
+      .hero-grid > *, .featured > *, .grid > *, .why-grid > *, .steps > *, .about > *,
+      .mock-main, .mock-kpis > *, .mock-shell, .hero-stats, .card, .price-card{ min-width:0; }
+      .mock{ min-width:0; }
+      .mock-main{ overflow:hidden; }
+      @media (max-width:480px){ .wrap{ width:calc(100% - 32px); } }
+
+      h1,h2,h3,.display{ font-family:"Bricolage Grotesque","Manrope",sans-serif; letter-spacing:-.01em; }
+      h2{ font-size:clamp(1.9rem, 4vw, 2.9rem); line-height:1.06; margin:0 0 14px; font-weight:800; }
+      .section{ padding:96px 0 8px; }
+      .section-head{ max-width:680px; margin-bottom:36px; }
+      .section-head p{ color:var(--ink-soft); font-size:1.05rem; line-height:1.65; margin:0; }
+      .kicker{
+        display:inline-flex; align-items:center; gap:8px;
+        font-size:.78rem; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+        color:var(--emerald); margin-bottom:16px;
+      }
+      .kicker::before{ content:""; width:26px; height:2px; background:var(--emerald); border-radius:2px; }
+
+      /* ---------- Glass primitives ---------- */
+      .glass{
+        background:var(--glass);
+        border:1px solid var(--glass-edge);
+        border-radius:var(--radius-lg);
+        box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.14);
+        backdrop-filter:blur(18px) saturate(150%);
+        -webkit-backdrop-filter:blur(18px) saturate(150%);
+      }
+      .btn{
+        display:inline-flex; align-items:center; justify-content:center; gap:9px;
+        min-height:48px; padding:13px 24px; border-radius:999px;
+        font-weight:800; font-size:.98rem; text-decoration:none; cursor:pointer;
+        border:1px solid transparent; transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+        white-space:nowrap;
+      }
+      .btn svg{ width:18px; height:18px; flex:none; }
+      .btn-primary{
+        background:linear-gradient(135deg, #34d399, #0ea371);
+        color:#032117; box-shadow:0 12px 30px rgba(16,185,129,.35), inset 0 1px 0 rgba(255,255,255,.45);
+      }
+      .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(16,185,129,.45), inset 0 1px 0 rgba(255,255,255,.45); }
+      .btn-glass{
+        background:rgba(255,255,255,.08); color:var(--ink);
+        border-color:var(--glass-edge);
+        backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+      }
+      .btn-glass:hover{ transform:translateY(-2px); background:rgba(255,255,255,.14); }
+      .btn-disabled{
+        background:rgba(255,255,255,.05); color:var(--ink-faint);
+        border:1px dashed rgba(255,255,255,.22); cursor:default;
+      }
+      .pill{
+        display:inline-flex; align-items:center; gap:7px;
+        padding:7px 13px; border-radius:999px; font-size:.8rem; font-weight:800;
+        background:rgba(52,211,153,.14); color:#6ee7b7; border:1px solid rgba(52,211,153,.35);
+      }
+      .pill-soon{ background:rgba(251,191,36,.12); color:#fcd34d; border-color:rgba(251,191,36,.35); }
+      .pill-free{ background:rgba(56,189,248,.13); color:#7dd3fc; border-color:rgba(56,189,248,.35); }
+
+      /* ---------- Nav ---------- */
+      .nav{
+        position:sticky; top:0; z-index:60; height:var(--nav-h);
+        background:rgba(3,17,26,.62);
+        border-bottom:1px solid rgba(255,255,255,.09);
+        backdrop-filter:blur(20px) saturate(150%);
+        -webkit-backdrop-filter:blur(20px) saturate(150%);
+      }
+      .nav-in{ height:var(--nav-h); display:flex; align-items:center; gap:28px; }
+      .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; margin-right:auto; min-height:48px; }
+      .brand-mark{
+        width:40px; height:40px; border-radius:12px; flex:none;
+        display:grid; place-items:center;
+        font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:1rem; color:#032117;
+        background:linear-gradient(135deg,#5eead4,#34d399 55%,#0ea371);
+        box-shadow:0 8px 20px rgba(16,185,129,.4), inset 0 1px 0 rgba(255,255,255,.6);
+      }
+      .brand b{ font-family:"Bricolage Grotesque",sans-serif; font-size:1.06rem; display:block; line-height:1.1; }
+      .brand span{ font-size:.72rem; color:var(--ink-faint); font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+      .nav-links{ display:flex; gap:4px; }
+      .nav-links a{
+        padding:10px 14px; min-height:44px; display:inline-flex; align-items:center;
+        border-radius:999px; text-decoration:none; font-weight:700; font-size:.93rem; color:var(--ink-soft);
+        transition:background .2s, color .2s;
+      }
+      .nav-links a:hover{ background:rgba(255,255,255,.09); color:var(--ink); }
+      .nav .btn{ min-height:44px; padding:10px 20px; }
+      .menu-btn{
+        display:none; width:46px; height:46px; border-radius:12px; border:1px solid var(--glass-edge);
+        background:rgba(255,255,255,.07); color:var(--ink); cursor:pointer; place-items:center;
+      }
+      .menu-btn svg{ width:22px; height:22px; }
+      .mobile-menu{
+        display:none; position:absolute; top:calc(var(--nav-h) + 8px); left:16px; right:16px;
+        padding:10px; border-radius:20px; z-index:61;
+        background:rgba(4,22,32,.94);
+        box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.12);
+      }
+      .mobile-menu.open{ display:block; }
+      .mobile-menu a{
+        display:flex; align-items:center; min-height:48px; padding:10px 14px; border-radius:12px;
+        text-decoration:none; font-weight:700; color:var(--ink);
+      }
+      .mobile-menu a:hover{ background:rgba(255,255,255,.09); }
+      @media (max-width:900px){
+        .nav-links{ display:none; }
+        .menu-btn{ display:grid; }
+        .nav .btn-store{ display:none; }
+      }
+
+      /* ---------- Hero ---------- */
+      .hero{ padding:72px 0 30px; position:relative; }
+      .hero-grid{ display:grid; grid-template-columns:1.02fr .98fr; gap:52px; align-items:center; }
+      .hero h1{ font-size:clamp(2.55rem, 5.4vw, 4.15rem); line-height:1.02; font-weight:800; margin:18px 0 20px; }
+      .hero h1 em{ font-style:normal; color:var(--emerald); }
+      .hero-sub{ font-size:1.13rem; line-height:1.65; color:var(--ink-soft); margin:0 0 30px; max-width:540px; }
+      .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-bottom:38px; }
+      .hero-stats{ display:grid; grid-template-columns:repeat(4, 1fr); gap:12px; max-width:560px; }
+      .stat{ padding:16px 14px; border-radius:var(--radius-md); background:rgba(255,255,255,.05); border:1px solid var(--glass-edge-soft); }
+      .stat b{ font-family:"Bricolage Grotesque",sans-serif; font-size:1.65rem; font-weight:800; display:block; line-height:1; }
+      .stat b.pos{ color:var(--emerald); }
+      .stat span{ font-size:.76rem; color:var(--ink-faint); font-weight:700; display:block; margin-top:6px; line-height:1.35; }
+      @media (max-width:560px){ .hero-stats{ grid-template-columns:repeat(2,1fr); } }
+
+      /* Dashboard mock (pure CSS, decorative) */
+      .mock-shell{ padding:14px; position:relative; }
+      .mock{
+        border-radius:18px; overflow:hidden; background:rgba(4,20,30,.72);
+        border:1px solid rgba(255,255,255,.1); display:grid; grid-template-columns:118px 1fr; min-height:340px;
+      }
+      .mock-side{ background:rgba(2,12,20,.65); border-right:1px solid rgba(255,255,255,.07); padding:14px 10px; }
+      .mock-logo{ height:12px; width:58px; border-radius:6px; background:linear-gradient(90deg,#5eead4,#34d399); margin-bottom:16px; }
+      .mock-nav{ height:9px; border-radius:5px; background:rgba(255,255,255,.13); margin-bottom:10px; }
+      .mock-nav.on{ background:rgba(52,211,153,.55); width:82%; }
+      .mock-nav.short{ width:68%; }
+      .mock-main{ padding:16px; }
+      .mock-greet{ height:14px; width:46%; border-radius:7px; background:rgba(255,255,255,.5); margin-bottom:6px; }
+      .mock-greet-sub{ height:8px; width:30%; border-radius:4px; background:rgba(255,255,255,.18); margin-bottom:16px; }
+      .mock-kpis{ display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:12px; }
+      .mock-kpi{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:10px; }
+      .mock-kpi b{ font-family:"Bricolage Grotesque",sans-serif; font-size:1.02rem; display:block; }
+      .mock-kpi b.pos{ color:var(--emerald); }
+      .mock-kpi span{ font-size:.58rem; color:var(--ink-faint); font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
+      .mock-chart{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px; display:flex; align-items:flex-end; gap:7px; height:118px; }
+      .bar{ flex:1; border-radius:5px 5px 2px 2px; background:linear-gradient(to top, rgba(14,116,233,.55), rgba(56,189,248,.9)); }
+      .bar.g{ background:linear-gradient(to top, rgba(5,150,105,.6), rgba(52,211,153,.95)); }
+      .hero-badge{
+        position:absolute; right:-8px; bottom:26px; padding:13px 18px; border-radius:16px;
+        display:flex; align-items:center; gap:11px; font-weight:800; font-size:.9rem;
+      }
+      .hero-badge .dot{ width:10px; height:10px; border-radius:50%; background:var(--emerald); box-shadow:0 0 0 5px rgba(52,211,153,.2); }
+      .hero-badge small{ display:block; color:var(--ink-faint); font-weight:700; font-size:.72rem; }
+      @media (max-width:980px){
+        .hero-grid{ grid-template-columns:1fr; gap:40px; }
+        .hero{ padding-top:48px; }
+        .hero-badge{ right:8px; }
+      }
+      @media (max-width:480px){ .mock{ grid-template-columns:86px 1fr; } .mock-kpis{ grid-template-columns:repeat(3,1fr); } }
+
+      /* Trust strip */
+      .trust{ margin-top:56px; padding:20px 26px; display:flex; flex-wrap:wrap; gap:14px 34px; align-items:center; justify-content:space-between; border-radius:var(--radius-md); }
+      .trust-item{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:.93rem; color:var(--ink-soft); }
+      .trust-item svg{ width:20px; height:20px; color:var(--emerald); flex:none; }
+      @media (max-width:760px){ .trust{ justify-content:flex-start; } }
+
+      /* ---------- Featured ---------- */
+      .featured{ padding:34px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+      .price-row{ display:flex; flex-wrap:wrap; gap:14px; margin:24px 0; }
+      .price-card{
+        flex:1 1 180px; padding:20px; border-radius:var(--radius-md);
+        background:rgba(255,255,255,.05); border:1px solid var(--glass-edge-soft);
+      }
+      .price-card.hot{ border-color:rgba(52,211,153,.45); background:rgba(52,211,153,.08); }
+      .price-card .tier{ font-size:.78rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+      .price-card.hot .tier{ color:var(--emerald); }
+      .price{ font-family:"Bricolage Grotesque",sans-serif; font-size:3rem; font-weight:800; line-height:1; margin:8px 0 4px; }
+      .price-card p{ margin:0 0 16px; font-size:.88rem; color:var(--ink-soft); line-height:1.5; }
+      .price-card .btn{ width:100%; }
+      .feat-list{ list-style:none; margin:0; padding:0; display:grid; gap:11px; }
+      .feat-list li{ display:flex; gap:11px; align-items:flex-start; color:var(--ink-soft); line-height:1.55; font-size:.98rem; }
+      .feat-list svg{ width:19px; height:19px; color:var(--emerald); flex:none; margin-top:2px; }
+      .feat-list b{ color:var(--ink); }
+      .featured-copy p.lede{ color:var(--ink-soft); line-height:1.65; font-size:1.03rem; margin:0 0 20px; }
+      .lite-row{
+        margin-top:6px; padding:16px 18px; border-radius:var(--radius-md);
+        background:rgba(56,189,248,.08); border:1px solid rgba(56,189,248,.28);
+        display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+      }
+      .lite-row p{ margin:0; font-size:.94rem; color:var(--ink-soft); line-height:1.5; }
+      .lite-row b{ color:var(--ink); }
+      @media (max-width:980px){ .featured{ grid-template-columns:1fr; padding:26px; } }
+
+      /* ---------- Product grid ---------- */
+      .grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; }
+      @media (max-width:820px){ .grid{ grid-template-columns:1fr; } }
+      .card{ padding:28px; display:flex; flex-direction:column; transition:transform .3s ease, background .3s ease; }
+      .card:hover{ transform:translateY(-5px); background:var(--glass-strong); }
+      .card-top{ display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:18px; }
+      .card h3{ font-size:1.45rem; margin:0 0 6px; font-weight:800; }
+      .card .sub{ color:var(--ink-faint); font-size:.9rem; font-weight:700; margin:0; }
+      .card p.desc{ color:var(--ink-soft); line-height:1.62; margin:0 0 18px; font-size:.99rem; }
+      .card .feat-list{ margin-bottom:22px; }
+      .card-foot{ margin-top:auto; }
+      .card-price{ display:flex; align-items:baseline; gap:10px; margin-bottom:16px; }
+      .card-price .amount{ font-family:"Bricolage Grotesque",sans-serif; font-size:2.6rem; font-weight:800; line-height:1; }
+      .card-price .note{ color:var(--ink-faint); font-size:.85rem; font-weight:700; }
+      .card-actions{ display:flex; flex-wrap:wrap; gap:11px; }
+      .card-actions .btn{ flex:1 1 auto; }
+      /* mini visuals */
+      .visual{ border-radius:16px; border:1px solid rgba(255,255,255,.1); background:rgba(3,16,26,.55); padding:16px; margin-bottom:20px; min-height:118px; }
+      .v-bars{ display:flex; align-items:flex-end; gap:6px; height:86px; }
+      .v-bars i{ flex:1; border-radius:4px 4px 2px 2px; background:linear-gradient(to top, rgba(14,116,233,.5), rgba(56,189,248,.9)); }
+      .v-bars i.g{ background:linear-gradient(to top, rgba(5,150,105,.55), rgba(52,211,153,.95)); }
+      .v-week{ display:grid; grid-template-columns:repeat(7,1fr); gap:7px; }
+      .v-day{ aspect-ratio:1; border-radius:10px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.09); display:grid; place-items:center; color:var(--emerald); }
+      .v-day svg{ width:16px; height:16px; }
+      .v-day.off{ color:rgba(255,255,255,.18); }
+      .v-week-labels{ display:grid; grid-template-columns:repeat(7,1fr); gap:7px; margin-top:7px; text-align:center; font-size:.62rem; font-weight:800; color:var(--ink-faint); letter-spacing:.05em; }
+      .v-book{ display:flex; gap:16px; align-items:center; }
+      .v-book-spine{
+        width:74px; height:96px; border-radius:6px 12px 12px 6px; flex:none;
+        background:linear-gradient(150deg, #0b3b4f, #052e2b 60%, #065f46);
+        border:1px solid rgba(255,255,255,.2); display:grid; place-items:center;
+        font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:1.7rem; color:#a7f3d0;
+        box-shadow:inset 4px 0 0 rgba(255,255,255,.14);
+      }
+      .v-book p{ margin:0; color:var(--ink-soft); font-size:.88rem; line-height:1.55; }
+      .v-book b{ color:var(--ink); display:block; font-size:.95rem; margin-bottom:3px; }
+      .v-cal{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+      .v-cal i{ aspect-ratio:1.25; border-radius:7px; background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.07); }
+      .v-cal i.mark{ background:rgba(251,191,36,.22); border-color:rgba(251,191,36,.4); }
+
+
+      /* ---------- Shop filter + categories ---------- */
+      .filter-bar{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:44px; }
+      .filter-btn{
+        min-height:46px; padding:11px 20px; border-radius:999px; cursor:pointer;
+        font-family:inherit; font-weight:800; font-size:.93rem; color:var(--ink-soft);
+        background:rgba(255,255,255,.06); border:1px solid var(--glass-edge);
+        backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+        transition:background .2s, color .2s, transform .2s;
+      }
+      .filter-btn:hover{ background:rgba(255,255,255,.13); color:var(--ink); transform:translateY(-1px); }
+      .filter-btn.active{ background:linear-gradient(135deg,#34d399,#0ea371); color:#032117; border-color:transparent; box-shadow:0 10px 26px rgba(16,185,129,.35); }
+      .filter-btn .cnt{ opacity:.65; font-size:.82em; margin-left:4px; }
+      .cat-section{ margin-bottom:56px; scroll-margin-top:96px; }
+      .cat-section:last-child{ margin-bottom:8px; }
+      .cat-section.hidden{ display:none; }
+      .cat-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:12px 16px; margin-bottom:8px; }
+      .cat-head h3{ font-size:clamp(1.5rem,3vw,2rem); margin:0; font-weight:800; }
+      .cat-count{
+        padding:6px 12px; border-radius:999px; font-size:.78rem; font-weight:800;
+        background:rgba(52,211,153,.12); color:#6ee7b7; border:1px solid rgba(52,211,153,.3);
+      }
+      .cat-desc{ color:var(--ink-soft); line-height:1.62; margin:0 0 24px; max-width:720px; font-size:.99rem; }
+      .card-wide{ grid-column:1 / -1; }
+      .sub-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:22px; }
+      @media (max-width:900px){ .sub-grid{ grid-template-columns:1fr; } }
+      .sub-card{ padding:24px; }
+      .sub-card h4{ font-size:1.18rem; margin:0 0 6px; font-weight:800; font-family:"Bricolage Grotesque",sans-serif; }
+      .sub-card .sub{ color:var(--ink-faint); font-size:.86rem; font-weight:700; margin:0 0 12px; }
+      .sub-card p.desc{ color:var(--ink-soft); line-height:1.6; margin:0 0 16px; font-size:.94rem; }
+      .nav-links a.cat-link{ color:var(--ink); }
+      .v-planner{ display:grid; grid-template-columns:repeat(5,1fr); gap:7px; }
+      .v-planner i{ aspect-ratio:1.15; border-radius:9px; background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.08); display:grid; place-items:center; font-style:normal; font-size:.58rem; font-weight:800; color:var(--ink-faint); letter-spacing:.03em; padding:2px; text-align:center; }
+      .v-planner i.mark{ background:rgba(251,191,36,.18); border-color:rgba(251,191,36,.38); color:#fcd34d; }
+      .v-planner i.em{ background:rgba(52,211,153,.14); border-color:rgba(52,211,153,.32); color:#6ee7b7; }
+
+
+      .publish-note{ color:var(--ink-soft); font-size:.84rem; font-weight:700; margin:-6px 0 16px; }
+      .meta-line{ font-size:.82rem; color:var(--ink-faint); line-height:1.55; margin:0 0 10px; }
+      .meta-line b{ color:var(--ink-soft); }
+      .source-note{ font-size:.82rem; color:var(--ink-faint); line-height:1.5; margin:12px 0 0; }
+      .source-note a{ color:var(--emerald); font-weight:700; text-decoration:underline; text-underline-offset:2px; }
+      .not-gumroad{ display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; font-size:.78rem; font-weight:800; background:rgba(251,191,36,.12); color:#fcd34d; border:1px solid rgba(251,191,36,.35); margin-bottom:14px; }
+      .not-gumroad.free{ background:rgba(56,189,248,.12); color:#7dd3fc; border-color:rgba(56,189,248,.35); }
+      .gumroad-prices{ padding:28px; }
+      .gumroad-prices h3{ margin:0 0 8px; font-size:1.35rem; }
+      .gumroad-prices p.intro{ color:var(--ink-soft); line-height:1.6; margin:0 0 18px; font-size:.96rem; }
+      .gumroad-list{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+      .gumroad-list li{ display:flex; flex-wrap:wrap; gap:8px 14px; align-items:baseline; justify-content:space-between; padding:14px 0; border-top:1px solid rgba(255,255,255,.08); }
+      .gumroad-list li:first-child{ border-top:none; padding-top:2px; }
+      .gumroad-list b{ color:var(--ink); }
+      .gumroad-list .gp{ color:var(--emerald); font-weight:800; white-space:nowrap; }
+      .gumroad-list a{ color:var(--emerald); font-weight:700; }
+
+      /* ---------- Why / included ---------- */
+      .why-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:22px; }
+      @media (max-width:900px){ .why-grid{ grid-template-columns:1fr; } }
+      .why-main{ padding:32px; }
+      .why-main .feat-list{ gap:16px; }
+      .why-main .feat-list li{ font-size:1rem; }
+      .compare{ padding:32px; }
+      .compare h3{ margin:0 0 18px; font-size:1.3rem; }
+      .cmp-row{ display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center; padding:13px 0; border-top:1px solid rgba(255,255,255,.08); font-size:.95rem; }
+      .cmp-row:first-of-type{ border-top:none; }
+      .cmp-row .h{ font-weight:800; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); }
+      .cmp-row .lite{ color:#7dd3fc; font-weight:800; text-align:right; min-width:64px; }
+      .cmp-row .pro{ color:var(--emerald); font-weight:800; text-align:right; min-width:64px; }
+      .cmp-note{ color:var(--ink-faint); font-size:.86rem; line-height:1.55; margin:16px 0 0; }
+
+      /* ---------- How it works ---------- */
+      .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+      @media (max-width:900px){ .steps{ grid-template-columns:1fr; } }
+      .step{ padding:30px; }
+      .step .num{ font-family:"Bricolage Grotesque",sans-serif; font-size:3.4rem; font-weight:800; line-height:1; color:transparent; -webkit-text-stroke:1.5px rgba(94,234,212,.65); margin-bottom:16px; }
+      .step h3{ margin:0 0 9px; font-size:1.22rem; }
+      .step p{ margin:0; color:var(--ink-soft); line-height:1.62; font-size:.97rem; }
+
+      /* ---------- FAQ ---------- */
+      .faq{ max-width:820px; }
+      details.faq-item{ border-radius:var(--radius-md); margin-bottom:12px; overflow:hidden; }
+      details.faq-item summary{
+        list-style:none; cursor:pointer; padding:20px 24px; min-height:56px;
+        display:flex; align-items:center; justify-content:space-between; gap:16px;
+        font-weight:800; font-size:1.02rem;
+      }
+      details.faq-item summary::-webkit-details-marker{ display:none; }
+      details.faq-item summary .chev{ width:20px; height:20px; flex:none; color:var(--emerald); transition:transform .3s ease; }
+      details.faq-item[open ] summary .chev{ transform:rotate(180deg); }
+      details.faq-item .a{ padding:0 24px 22px; color:var(--ink-soft); line-height:1.65; font-size:.97rem; }
+      details.faq-item .a a{ color:var(--emerald); font-weight:700; }
+
+      /* ---------- About ---------- */
+      .about{ padding:36px; display:grid; grid-template-columns:auto 1fr; gap:34px; align-items:center; }
+      .avatar{
+        width:118px; height:118px; border-radius:32px; display:grid; place-items:center;
+        font-family:"Bricolage Grotesque",sans-serif; font-weight:800; font-size:2.4rem; color:#032117;
+        background:linear-gradient(140deg,#5eead4,#34d399 55%,#0ea371);
+        box-shadow:0 18px 40px rgba(16,185,129,.35), inset 0 2px 0 rgba(255,255,255,.55);
+      }
+      .about h2{ margin-bottom:10px; }
+      .about p{ color:var(--ink-soft); line-height:1.68; margin:0 0 20px; max-width:640px; }
+      .about .tags{ display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px; }
+      .tag{ padding:8px 14px; border-radius:999px; background:rgba(255,255,255,.07); border:1px solid var(--glass-edge-soft); font-size:.84rem; font-weight:800; }
+      @media (max-width:700px){ .about{ grid-template-columns:1fr; padding:28px; } }
+
+      /* ---------- Footer ---------- */
+      footer{ margin-top:100px; border-top:1px solid rgba(255,255,255,.09); background:rgba(3,15,24,.6); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+      .foot-in{ padding:44px 0 110px; display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start; justify-content:space-between; }
+      .foot-in p{ color:var(--ink-faint); font-size:.9rem; line-height:1.6; margin:10px 0 0; max-width:380px; }
+      .foot-links{ display:flex; flex-direction:column; gap:4px; }
+      .foot-links a{ padding:8px 0; min-height:36px; display:inline-flex; align-items:center; color:var(--ink-soft); text-decoration:none; font-weight:700; font-size:.94rem; }
+      .foot-links a:hover{ color:var(--emerald); }
+      .foot-links .h{ font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); font-weight:800; margin-bottom:8px; }
+      .mobile-bar{
+        display:none; position:fixed; left:12px; right:12px; bottom:12px; z-index:55;
+        padding:10px; border-radius:20px; gap:10px;
+        background:rgba(3,17,26,.78); border:1px solid var(--glass-edge);
+        backdrop-filter:blur(20px) saturate(150%); -webkit-backdrop-filter:blur(20px) saturate(150%);
+        box-shadow:var(--shadow);
+      }
+      .mobile-bar .btn{ flex:1; min-height:48px; padding:10px 12px; font-size:.92rem; }
+      @media (max-width:760px){ .mobile-bar{ display:flex; } }
+
+      /* Reveal: content is always visible (no opacity gating, so the page
+         renders fully with or without JS / scrolling). Motion on this page
+         comes from hover states and the quantised blob parallax. */
+      @media (prefers-reduced-motion: reduce){
+        html{ scroll-behavior:auto; }
+        *, *::before, *::after{ transition:none !important; animation:none !important; }
+        .card:hover, .btn:hover{ transform:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true">
+      <div class="blob blob-a" data-depth="14"></div>
+      <div class="blob blob-b" data-depth="-20"></div>
+      <div class="blob blob-c" data-depth="10"></div>
+    </div>
+
+    <!-- ===================== NAV ===================== -->
+    <header class="nav">
+      <div class="wrap nav-in">
+        <a class="brand" href="#top" aria-label="Nassar Khan — home">
+          <span class="brand-mark">NK</span>
+          <span><b>Nassar Khan</b><span>Digital Products</span></span>
+        </a>
+        <nav class="nav-links" aria-label="Sections">
+          <a href="#featured">Featured</a>
+          <a href="#shop">Shop</a>
+          <a class="cat-link" href="#cat-saas">SaaS &amp; Code</a>
+          <a class="cat-link" href="#cat-habits">Habits</a>
+          <a class="cat-link" href="#cat-planners">Planners</a>
+          <a class="cat-link" href="#cat-ebooks">Ebooks</a>
+          <a href="#faq">FAQ</a>
+          <a href="#about">About</a>
+        </nav>
+        <a class="btn btn-primary btn-store" href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">
+          Visit Gumroad store
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+      <nav class="mobile-menu glass" id="mobileMenu" aria-label="Menu">
+        <a href="#featured">Featured — Nexora Pro</a>
+        <a href="#shop">Shop — all categories</a>
+        <a href="#cat-saas">Category: SaaS &amp; Code Templates</a>
+        <a href="#cat-habits">Category: Habits &amp; Discipline</a>
+        <a href="#cat-planners">Category: Planners &amp; Productivity</a>
+        <a href="#cat-ebooks">Category: Prompt Packs &amp; Ebooks</a>
+        <a href="#why">Why buy</a>
+        <a href="#how">How buying works</a>
+        <a href="#faq">FAQ</a>
+        <a href="#about">About the seller</a>
+        <a href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">Visit Gumroad store ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- ===================== HERO ===================== -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <span class="pill"><span aria-hidden="true">●</span> Store open — secure checkout via Gumroad</span>
+            <h1>Premium templates &amp; digital products, <em>ready to use today.</em></h1>
+            <p class="hero-sub">Production-ready SaaS dashboard templates, a printable habit tracker and practical ebooks — built by Nassar Uminallah Khan with React, TypeScript and Tailwind. Buy once, download instantly, and start building.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="#shop">
+                Browse products
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M19 12l-7 7-7-7"/></svg>
+              </a>
+              <a class="btn btn-glass" href="#featured">See Nexora Pro — from $49</a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat"><b>20</b><span>pages in Nexora Pro</span></div>
+              <div class="stat"><b class="pos">Free</b><span>Nexora Lite — 8 pages on GitHub</span></div>
+              <div class="stat"><b>41</b><span>pages in the 32 3D Prompts Ebook</span></div>
+              <div class="stat"><b class="pos">$5</b><span>Habit Tracker — start today</span></div>
+            </div>
+          </div>
+          <div class="glass mock-shell" aria-hidden="true">
+            <div class="mock">
+              <div class="mock-side">
+                <div class="mock-logo"></div>
+                <div class="mock-nav on"></div>
+                <div class="mock-nav"></div>
+                <div class="mock-nav short"></div>
+                <div class="mock-nav"></div>
+                <div class="mock-nav short"></div>
+                <div class="mock-nav"></div>
+                <div class="mock-nav short"></div>
+              </div>
+              <div class="mock-main">
+                <div class="mock-greet"></div>
+                <div class="mock-greet-sub"></div>
+                <div class="mock-kpis">
+                  <div class="mock-kpi"><b>12</b><span>Projects</span></div>
+                  <div class="mock-kpi"><b class="pos">+18%</b><span>Growth</span></div>
+                  <div class="mock-kpi"><b>28</b><span>Transactions</span></div>
+                </div>
+                <div class="mock-chart">
+                  <div class="bar" style="height:38%"></div>
+                  <div class="bar" style="height:55%"></div>
+                  <div class="bar g" style="height:47%"></div>
+                  <div class="bar" style="height:66%"></div>
+                  <div class="bar" style="height:58%"></div>
+                  <div class="bar g" style="height:78%"></div>
+                  <div class="bar" style="height:70%"></div>
+                  <div class="bar g" style="height:92%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="glass hero-badge"><span class="dot"></span><span>Instant download<small>Delivered by Gumroad after checkout</small></span></div>
+          </div>
+        </div>
+        <div class="wrap">
+          <div class="glass trust">
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> Secure checkout on Gumroad</span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg> Instant download — no waiting</span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg> React · TypeScript · Tailwind</span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Free Lite version to try first</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FEATURED: NEXORA PRO ===================== -->
+      <section class="section" id="featured">
+        <div class="wrap">
+          <div class="section-head rv">
+            <span class="kicker">Featured product</span>
+            <h2>Nexora Pro — the full SaaS dashboard template</h2>
+            <p>A premium admin dashboard built with React, TypeScript and Tailwind CSS. Twenty complete pages with charts, tables, forms and a collapsible sidebar — the fastest way to start your next SaaS product.</p>
+          </div>
+          <div class="glass featured rv">
+            <div class="featured-copy">
+              <span class="pill">Best seller · 20 pages</span>
+              <h3 class="display" style="font-size:1.7rem; margin:16px 0 10px;">Everything a SaaS dashboard needs, already built</h3>
+              <p class="lede">Overview, Analytics, Projects, Customers, Transactions, Reports, Notifications and Settings — plus the Pro set: CRM, HR, Finance, Calendar, Kanban, Team, Invoices, Inbox, E-commerce and Login / Signup. Global search, light &amp; dark mode, CSV export and toast notifications are all wired up and ready.</p>
+              <ul class="feat-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>20 complete pages</b> — Overview, Analytics, Projects, Customers, Transactions, Reports, Notifications, Settings + Pro CRM, HR, Finance, Calendar, Kanban, Team, Invoices, Inbox, E-commerce, Login/Signup.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Modern stack</b> — React 19 + TypeScript + Vite + Tailwind v4 + Recharts, clean component structure.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Fully interactive</b> — KPI cards, charts, and tables with search / sort / filter / pagination, create / edit / delete forms, and CSV export.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Dark / light mode</b> with a collapsible sidebar and global search built in. Sample data lives in localStorage — no backend required.</span></li>
+              </ul>
+              <p class="meta-line"><b>Category:</b> Software Development &gt; Web Development &gt; Web Templates</p>
+              <p class="meta-line"><b>Tags:</b> react dashboard, saas dashboard, admin template, react template, tailwind dashboard, typescript, dashboard template</p>
+              <div class="lite-row">
+                <p><b>Not sure yet?</b> Nexora Lite gives you the 8 core pages, completely free on GitHub. <b>Not on Gumroad — Free on GitHub</b></p>
+                <a class="btn btn-glass" href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">
+                  Get Lite free
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+                </a>
+              </div>
+            </div>
+            <div>
+              <div class="price-row" style="margin-top:0;">
+                <div class="price-card">
+                  <span class="tier">Standard licence</span>
+                  <p style="font-weight:800; color:var(--ink); margin:8px 0 2px; font-size:.92rem; line-height:1.4;">Nexora Pro — React SaaS Dashboard Template (Standard Licence)</p>
+                  <div class="price">$49</div>
+                  <p>Premium working React SaaS dashboard — 20 pages, one end product.</p>
+                  <a class="btn btn-glass" href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">Buy on Gumroad — $49</a>
+                  <p class="source-note">Price verified on Gumroad — 15 Nov 2026 · <a href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">View on Gumroad</a></p>
+                </div>
+                <div class="price-card hot">
+                  <span class="tier">Extended licence</span>
+                  <p style="font-weight:800; color:var(--ink); margin:8px 0 2px; font-size:.92rem; line-height:1.4;">Nexora Pro — React SaaS Dashboard Template (Extended Licence)</p>
+                  <div class="price">$149</div>
+                  <p>Premium working React SaaS dashboard — 20 pages, multiple/client projects.</p>
+                  <a class="btn btn-primary" href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">Buy on Gumroad — $149</a>
+                  <p class="source-note">Price verified on Gumroad — 15 Nov 2026 · <a href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">View on Gumroad</a></p>
+                </div>
+              </div>
+              <p style="color:var(--ink-faint); font-size:.88rem; line-height:1.6; margin:0;">Both licences are sold securely through Gumroad with instant download after checkout. Licence details are listed on each Gumroad product page.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SHOP BY CATEGORY ===================== -->
+      <section class="section" id="shop">
+        <div class="wrap">
+          <div class="section-head rv">
+            <span class="kicker">Shop by category</span>
+            <h2>Browse the store</h2>
+            <p>Eight products across four categories — templates, habit tools, planners and ebooks. Use the filter to jump straight to what you need. Live products check out securely on Gumroad. The Planner and its bundles are Coming Soon at the prices shown, with no checkout yet; the 32 3D Prompts Ebook is a finished Gumroad draft at $19, publishing next.</p>
+          </div>
+
+          <div class="filter-bar" role="group" aria-label="Filter products by category">
+            <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All products <span class="cnt">8</span></button>
+            <button class="filter-btn" type="button" data-filter="saas" aria-pressed="false">SaaS &amp; Code Templates <span class="cnt">2</span></button>
+            <button class="filter-btn" type="button" data-filter="habits" aria-pressed="false">Habits &amp; Discipline <span class="cnt">1</span></button>
+            <button class="filter-btn" type="button" data-filter="planners" aria-pressed="false">Planners &amp; Productivity <span class="cnt">4</span></button>
+            <button class="filter-btn" type="button" data-filter="ebooks" aria-pressed="false">Prompt Packs &amp; Ebooks <span class="cnt">1</span></button>
+          </div>
+
+          <!-- ===== Category 1: SaaS & Code Templates ===== -->
+          <div class="cat-section" id="cat-saas" data-category="saas">
+            <div class="cat-head"><h3>SaaS &amp; Code Templates</h3><span class="cat-count">2 products</span></div>
+            <p class="cat-desc">Production-ready dashboard code you can build a real product on — React, TypeScript and Tailwind, with a free Lite version to evaluate first.</p>
+            <div class="grid">
+              <!-- Nexora Pro -->
+              <article class="glass card rv">
+                <div class="card-top">
+                  <div><h3>Nexora Pro — React SaaS Dashboard Template</h3><p class="sub">Standard Licence &amp; Extended Licence · 20 pages · Live on Gumroad</p></div>
+                  <span class="pill">Best seller</span>
+                </div>
+                <div class="visual" aria-hidden="true">
+                  <div class="v-bars">
+                    <i style="height:34%"></i><i style="height:52%"></i><i class="g" style="height:44%"></i><i style="height:64%"></i><i style="height:56%"></i><i class="g" style="height:76%"></i><i style="height:68%"></i><i class="g" style="height:88%"></i><i style="height:80%"></i><i class="g" style="height:96%"></i>
+                  </div>
+                </div>
+                <p class="desc">Premium working React SaaS dashboard — 20 pages, sold as two separate Gumroad products: Standard for one end product, Extended for multiple/client projects.</p>
+                <ul class="feat-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Nexora Pro — React SaaS Dashboard Template (Standard Licence)</b> — $49 — Premium working React SaaS dashboard — 20 pages, one end product.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Nexora Pro — React SaaS Dashboard Template (Extended Licence)</b> — $149 — Premium working React SaaS dashboard — 20 pages, multiple/client projects.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>20 complete pages</b> — Overview, Analytics, Projects, Customers, Transactions, Reports, Notifications, Settings + Pro CRM, HR, Finance, Calendar, Kanban, Team, Invoices, Inbox, E-commerce, Login/Signup.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Stack</b> — React 19 + TypeScript + Vite + Tailwind v4 + Recharts, with dark/light mode.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Working features</b> — KPI cards, charts, tables with search/sort/filter/pagination, create/edit/delete forms, CSV export. Sample data in localStorage, no backend.</span></li>
+                </ul>
+                <p class="meta-line"><b>Category:</b> Software Development &gt; Web Development &gt; Web Templates</p>
+                <p class="meta-line"><b>Tags:</b> react dashboard, saas dashboard, admin template, react template, tailwind dashboard, typescript, dashboard template</p>
+                <div class="card-foot">
+                  <div class="card-price"><span class="amount">$49</span><span class="note">Standard · $149 Extended</span></div>
+                  <div class="card-actions">
+                    <a class="btn btn-primary" href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">Buy on Gumroad — $49</a>
+                    <a class="btn btn-glass" href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">Buy on Gumroad — $149</a>
+                  </div>
+                  <p class="source-note">Price verified on Gumroad — 15 Nov 2026 · Standard: <a href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">View on Gumroad</a> · Extended: <a href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">View on Gumroad</a></p>
+                </div>
+              </article>
+
+              <!-- Nexora Lite -->
+              <article class="glass card rv">
+                <div class="card-top">
+                  <div><h3>Nexora Lite</h3><p class="sub">SaaS Dashboard Template · 8 pages</p></div>
+                  <span class="pill pill-free">Free</span>
+                </div>
+                <div class="visual" aria-hidden="true">
+                  <div class="v-bars">
+                    <i style="height:40%"></i><i style="height:58%"></i><i class="g" style="height:50%"></i><i style="height:70%"></i><i style="height:62%"></i><i class="g" style="height:82%"></i><i style="height:74%"></i><i class="g" style="height:90%"></i>
+                  </div>
+                </div>
+                <p class="desc">The free 8-page version of Nexora — same React, TypeScript and Tailwind stack and the same code quality, so you can judge Pro before you spend anything.</p>
+                <ul class="feat-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>8 core pages</b> — Overview, Analytics, Projects, Customers, Transactions, Reports, Notifications, Settings — completely free on GitHub.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Upgrade to Pro any time for the full 20 pages.</span></li>
+                </ul>
+                <div class="card-foot">
+                  <span class="not-gumroad free">Not on Gumroad — Free on GitHub</span>
+                  <div class="card-price"><span class="amount">Free</span><span class="note">On GitHub</span></div>
+                  <div class="card-actions">
+                    <a class="btn btn-primary" href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">Get Lite free on GitHub</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- ===== Category 2: Habits & Discipline ===== -->
+          <div class="cat-section" id="cat-habits" data-category="habits">
+            <div class="cat-head"><h3>Habits &amp; Discipline</h3><span class="cat-count">1 product</span></div>
+            <p class="cat-desc">Simple systems for building habits that stick — from <a href="https://dailydisciplineforge.blogspot.com" target="_blank" rel="noopener" style="color:var(--emerald); font-weight:700;">The Consistent Code</a>, the discipline and focus blog behind this tracker.</p>
+            <div class="grid">
+              <!-- Habit Tracker -->
+              <article class="glass card card-wide rv">
+                <div class="card-top">
+                  <div><h3>Luxury Habit Tracker (PDF + App) — Daily &amp; Monthly Planner for Discipline</h3><p class="sub">Printable PDF + Tracker App · Live on Gumroad</p></div>
+                  <span class="pill pill-free">Free sample included</span>
+                </div>
+                <div class="visual" aria-hidden="true">
+                  <div class="v-week">
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                    <span class="v-day off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14"/></svg></span>
+                    <span class="v-day"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+                  </div>
+                  <div class="v-week-labels"><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span></div>
+                </div>
+                <p class="desc">A luxury printable habit tracker + app to build small habits daily, track streaks, and stay consistent — one habit at a time.</p>
+                <ul class="feat-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>8-page printable PDF A4</b> — luxury emerald and gold, print it, pin it up, tick each day by hand.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Tracker app</b> with This Week / Month / Planner Sheet views, streaks and a today completion ring.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Export / Import JSON backup</b> — your data stays yours; note there is no cross-device sync.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Free 1-page sample</b> — try the format for a week before you buy.</span></li>
+                </ul>
+                <p class="meta-line"><b>Category:</b> Self Improvement &gt; Productivity</p>
+                <p class="meta-line"><b>Tags:</b> self improvement, habit tracker, morning routine, productivity planner, habit planner, printable tracker, monthly tracker, daily habit tracker, habit tracker pdf, discipline planner</p>
+                <div class="card-foot">
+                  <div class="card-price"><span class="amount">$5</span><span class="note">One-time payment · USD</span></div>
+                  <div class="card-actions">
+                    <a class="btn btn-primary" href="https://nassarkhan.gumroad.com/l/mljfk" target="_blank" rel="noopener">Buy on Gumroad — $5</a>
+                    <a class="btn btn-glass" href="https://dailydisciplineforge.blogspot.com/2026/11/free-weekly-habit-tracker-1-page-try.html" target="_blank" rel="noopener">Try free sample</a>
+                    <a class="btn btn-glass" href="https://dailydisciplineforge.blogspot.com" target="_blank" rel="noopener">Read The Consistent Code blog</a>
+                  </div>
+                  <p class="source-note">Price verified on Gumroad — 15 Nov 2026 · <a href="https://nassarkhan.gumroad.com/l/mljfk" target="_blank" rel="noopener">View on Gumroad</a></p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- ===== Category 3: Planners & Productivity ===== -->
+          <div class="cat-section" id="cat-planners" data-category="planners">
+            <div class="cat-head"><h3>Planners &amp; Productivity</h3><span class="cat-count">4 products · all coming soon</span></div>
+            <p class="cat-desc">A full planning system for 2027, in preparation now. Nothing in this category is on sale yet — the prices shown are the launch prices, and there is no checkout until they go live on Gumroad.</p>
+            <div class="grid">
+              <!-- 2027 Ultimate Planner -->
+              <article class="glass card card-wide rv">
+                <div class="card-top">
+                  <div><h3>2027 Ultimate Planner</h3><p class="sub">Full-year planner · In preparation</p></div>
+                  <span class="pill pill-soon">Coming soon</span>
+                </div>
+                <div class="visual" aria-hidden="true">
+                  <div class="v-planner">
+                    <i class="em">DASH</i><i>YEAR</i><i>MONTH</i><i>WEEK</i><i>DAY</i>
+                    <i>GOALS</i><i class="mark">HABITS</i><i>FINANCE</i><i>WELLNESS</i><i>JOURNAL</i>
+                    <i>LIBRARY</i><i>SEARCH</i><i class="em">PRINT</i><i>JSON</i><i>5 THEMES</i>
+                  </div>
+                </div>
+                <p class="desc">One planner for the whole of 2027 — plan at every level, from the year down to the day, with goals, habits, money, wellness and journaling in a single system. 1 January 2027 is a Friday, and the year is laid out from there.</p>
+                <ul class="feat-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Five planning views</b> — Dashboard, Year, Month, Week and Day.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Goals across 7 life areas</b>, plus built-in Habits, Finance, Wellness and Journal sections.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Library</b> — vision board, reading and movie trackers, travel plans, birthdays and more.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Daily routine blocks</b> — Morning, Afternoon and Night — with 5 themes to make it yours.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Search, JSON export and print</b> — find anything fast, back up your year, or print pages.</span></li>
+                </ul>
+                <div class="card-foot">
+                  <span class="not-gumroad">Not on Gumroad yet — Coming Soon</span>
+                  <div class="card-price"><span class="amount">$29</span><span class="note">One-time payment · USD</span></div>
+                  <div class="card-actions">
+                    <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="sub-grid">
+              <article class="glass card sub-card rv">
+                <div class="card-top">
+                  <div><h4>Productivity Bundle</h4><p class="sub">Add-on bundle</p></div>
+                  <span class="pill pill-soon">Coming soon</span>
+                </div>
+                <p class="desc">Unlimited habits with streaks and charts, goals across 7 life areas, routines and a progress dashboard — the power tools for the planner.</p>
+                <div class="card-foot">
+                  <span class="not-gumroad">Not on Gumroad yet — Coming Soon</span>
+                  <div class="card-price"><span class="amount" style="font-size:2rem;">$15</span></div>
+                  <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+                </div>
+              </article>
+              <article class="glass card sub-card rv">
+                <div class="card-top">
+                  <div><h4>Finance Bundle</h4><p class="sub">Add-on bundle</p></div>
+                  <span class="pill pill-soon">Coming soon</span>
+                </div>
+                <p class="desc">A budget with over-budget warnings, expense tracking, savings goals, an emergency fund and debt tracking.</p>
+                <div class="card-foot">
+                  <span class="not-gumroad">Not on Gumroad yet — Coming Soon</span>
+                  <div class="card-price"><span class="amount" style="font-size:2rem;">$17</span></div>
+                  <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+                </div>
+              </article>
+              <article class="glass card sub-card rv">
+                <div class="card-top">
+                  <div><h4>Self-Growth Bundle</h4><p class="sub">Add-on bundle</p></div>
+                  <span class="pill pill-soon">Coming soon</span>
+                </div>
+                <p class="desc">A journal with prompts, a 5-minute gratitude journal, wellness check-ins, reflections and a vision board.</p>
+                <div class="card-foot">
+                  <span class="not-gumroad">Not on Gumroad yet — Coming Soon</span>
+                  <div class="card-price"><span class="amount" style="font-size:2rem;">$15</span></div>
+                  <span class="btn btn-disabled" aria-disabled="true">Coming Soon</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- ===== Category 4: Prompt Packs & Ebooks ===== -->
+          <div class="cat-section" id="cat-ebooks" data-category="ebooks">
+            <div class="cat-head"><h3>Prompt Packs &amp; Ebooks</h3><span class="cat-count">1 product</span></div>
+            <p class="cat-desc">Copy-ready prompt packs and practical ebooks — starting with the complete set of 32 3D website prompts, with a live example site you can open right now.</p>
+            <div class="grid">
+              <!-- 3D Prompts Ebook -->
+              <article class="glass card card-wide rv">
+                <div class="card-top">
+                  <div><h3>32 3D Website Prompts Ebook — Smooth, No Stutters, Highly Optimized</h3><p class="sub">Ebook · 41-page A4 PDF · Gumroad draft — publishing next</p></div>
+                  <span class="pill pill-soon">Publishing next</span>
+                </div>
+                <div class="visual" aria-hidden="true">
+                  <div class="v-book">
+                    <div class="v-book-spine">32</div>
+                    <p><b>All 32 prompts in full</b>Copy-ready 3D website prompts in a black/gold 41-page A4 PDF — including Prompt 31 (Planner) and Prompt 32 (Habit Tracker) — plus the live ECLIPSE site built from one of them.</p>
+                  </div>
+                </div>
+                <p class="desc">Thirty-two complete, copy-ready prompts for building smooth, scroll-driven 3D-style websites — every prompt in full, in a 41-page A4 PDF with a black/gold design. The ECLIPSE streetwear launch site is the live example built from one of the prompts in the book.</p>
+                <ul class="feat-list">
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>41-page A4 PDF</b> — all 32 prompts in full, including Planner (31) and Habit Tracker (32).</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Smoothness Standard</b> — Vite 6 + React 19 + TypeScript, Tailwind v4, Lenis only (lerp 0.12), transform/opacity-only animation — smooth, no stutters, highly optimized.</span></li>
+                  <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Live example: ECLIPSE</b> — a real site built from one of the prompts in the book.</span></li>
+                </ul>
+                <p class="meta-line"><b>Category:</b> Design &gt; UI &amp; Web</p>
+                <p class="meta-line"><b>Tags:</b> 3d website, website prompts, ai website, claude prompts, cursor prompts, v0 prompts, web design, landing page, react template, smooth scrolling</p>
+                <div class="card-foot">
+                  <div class="card-price"><span class="amount">$19</span><span class="note">Gumroad draft price · USD</span></div>
+                  <p class="publish-note">Gumroad listing ready — publishing next. No Buy button until it is published.</p>
+                  <div class="card-actions">
+                    <a class="btn btn-glass" href="https://muse.ai/s/eclipse-streetwear-fashion-launch-xuxg6txzop1q22/3aXNDb97RH1hIyVYPL1QUAUGEs_k9Ht3-6ZTLc7kKgM" target="_blank" rel="noopener">View the ECLIPSE site</a>
+                    <span class="btn btn-disabled" aria-disabled="true">Publishing next — not on sale yet</span>
+                  </div>
+                  <p class="source-note">Draft created on Gumroad 15 Nov 2026, $19 · <a href="https://nassarkhan.gumroad.com/l/njefjd" target="_blank" rel="noopener">Gumroad draft listing</a></p>
+                </div>
+              </article>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===================== WHY BUY ===================== -->
+      <section class="section" id="why">
+        <div class="wrap">
+          <div class="section-head rv">
+            <span class="kicker">Why buy here</span>
+            <h2>Real products, honest pricing, instant delivery</h2>
+            <p>Every product on this page is finished, priced as shown, and delivered through Gumroad — no pre-orders dressed up as products, and nothing listed that doesn't exist.</p>
+          </div>
+          <div class="why-grid">
+            <div class="glass why-main rv">
+              <ul class="feat-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Try before you buy.</b> Nexora Lite is free on GitHub and the Habit Tracker has a free 1-page sample — judge the quality yourself first.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Built, not mocked up.</b> Nexora is working React + TypeScript + Tailwind code with real interactivity — charts, tables, forms, search and CSV export.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>One-time prices.</b> $49, $149 and $5 are the full prices shown on Gumroad — pay once at checkout, download instantly.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Secure by default.</b> Payment is handled by Gumroad's checkout — your card details never touch this website.</span></li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><b>Honest listings.</b> The 2027 Ultimate Planner and its bundles are labelled Coming Soon at the prices shown, with no checkout until they launch. The 32 3D Prompts Ebook is finished and drafted on Gumroad at $19 — publishing next, with no Buy button until it goes live.</span></li>
+              </ul>
+            </div>
+            <div class="glass compare rv">
+              <h3>Nexora: Lite vs Pro</h3>
+              <div class="cmp-row"><span class="h"> </span><span class="h lite" style="color:#7dd3fc;">Lite</span><span class="h pro" style="color:var(--emerald);">Pro</span></div>
+              <div class="cmp-row"><span>Pages</span><span class="lite">8</span><span class="pro">20</span></div>
+              <div class="cmp-row"><span>Price</span><span class="lite">Free</span><span class="pro">$49 / $149</span></div>
+              <div class="cmp-row"><span>Stack</span><span class="lite">React · TS</span><span class="pro">React · TS</span></div>
+              <div class="cmp-row"><span>Available on</span><span class="lite">GitHub</span><span class="pro">Gumroad</span></div>
+              <p class="cmp-note">Start with Lite to see the code quality, then upgrade to Pro for the full 20-page template when you're ready to build.</p>
+              <div style="display:flex; gap:11px; flex-wrap:wrap; margin-top:20px;">
+                <a class="btn btn-primary" href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">Buy on Gumroad — $49</a>
+                <a class="btn btn-glass" href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">Get Lite free</a>
+              </div>
+              <p class="source-note">Price verified on Gumroad — 15 Nov 2026 · <a href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">View on Gumroad</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== HOW BUYING WORKS ===================== -->
+      <section class="section" id="how">
+        <div class="wrap">
+          <div class="section-head rv">
+            <span class="kicker">How buying works</span>
+            <h2>From click to download in three steps</h2>
+            <p>All sales run through Gumroad — a well-known platform for digital products — so checkout is secure and delivery is automatic.</p>
+          </div>
+          <div class="steps">
+            <div class="glass step rv">
+              <div class="num">01</div>
+              <h3>Choose your product</h3>
+              <p>Pick a product above and tap <b>Buy on Gumroad</b>. You'll land on that product's official Gumroad page with its full description and licence details.</p>
+            </div>
+            <div class="glass step rv">
+              <div class="num">02</div>
+              <h3>Check out securely</h3>
+              <p>Pay on Gumroad's secure checkout at the exact price shown here — $49 or $149 for Nexora Pro, $5 for the Habit Tracker. No account on this website, no card details stored here.</p>
+            </div>
+            <div class="glass step rv">
+              <div class="num">03</div>
+              <h3>Download instantly</h3>
+              <p>Gumroad delivers your files right after payment — the template code or the printable tracker — ready to use immediately, with your receipt by email.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FAQ ===================== -->
+      <section class="section" id="faq">
+        <div class="wrap">
+          <div class="section-head rv">
+            <span class="kicker">FAQ</span>
+            <h2>Questions, answered</h2>
+          </div>
+          <div class="faq rv">
+            <details class="faq-item glass">
+              <summary>How do I pay, and is it secure?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">All payments go through <a href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">Gumroad's secure checkout</a>. This website never sees or stores your card details — the Buy buttons simply take you to the product's official Gumroad page.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>How and when do I receive my product?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">Instantly. As soon as Gumroad confirms your payment, your download is available on the confirmation page and in your email receipt — the Nexora Pro template files or the Habit Tracker printable.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>What's the difference between Nexora Lite and Nexora Pro?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">Nexora Lite is the free 8-page version on <a href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">GitHub</a> — ideal for evaluating the code. Nexora Pro is the full 20-page template sold on Gumroad, in two licences: Standard for $49 and Extended for $149. The licence terms for each are listed on its Gumroad page.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>What stack is Nexora built with?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">React, TypeScript and Tailwind CSS. It includes a collapsible sidebar, global search, light &amp; dark mode, charts, searchable and sortable tables with pagination, create / edit / delete forms, CSV export and toast notifications.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>Can I try the Habit Tracker before buying?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">Yes — a free 1-page sample is available, so you can print it and try the format for a week before deciding. The full tracker is $5 on <a href="https://nassarkhan.gumroad.com/l/mljfk" target="_blank" rel="noopener">Gumroad</a>.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>When can I buy the 32 3D Website Prompts Ebook?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">The ebook is finished — a 41-page A4 PDF with all 32 prompts in full — and its Gumroad listing is ready at $19 (draft created on Gumroad 15 Nov 2026). It is publishing next, so there is no Buy button until it goes live. You can already see what the prompts produce: the <a href="https://muse.ai/s/eclipse-streetwear-fashion-launch-xuxg6txzop1q22/3aXNDb97RH1hIyVYPL1QUAUGEs_k9Ht3-6ZTLc7kKgM" target="_blank" rel="noopener">ECLIPSE live site</a> was built from one of them.</div>
+            </details>
+            <details class="faq-item glass">
+              <summary>Is the 2027 Ultimate Planner available yet?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+              <div class="a">Not yet — it's in preparation and is not on Gumroad yet. Its price is $29, as shown. It is labelled “Not on Gumroad yet — Coming Soon” until it launches.</div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section class="section" id="about">
+        <div class="wrap">
+          <div class="glass about rv">
+            <div class="avatar" aria-hidden="true">NK</div>
+            <div>
+              <span class="kicker">About the seller</span>
+              <h2>Nassar Uminallah Khan</h2>
+              <p>I'm a digital product builder based in Pakistan, focused on premium SaaS dashboards and practical digital products. I build with React, TypeScript and Tailwind CSS — the same stack behind Nexora — and I sell only finished products: if it's listed with a price, it exists and it's ready to download today.</p>
+              <div class="tags">
+                <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span><span class="tag">SaaS Dashboards</span><span class="tag">Digital Products</span><span class="tag">Pakistan</span>
+              </div>
+              <div style="display:flex; gap:12px; flex-wrap:wrap;">
+                <a class="btn btn-primary" href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">Visit my Gumroad store</a>
+                <a class="btn btn-glass" href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">Nexora Lite on GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ===================== ALL PRICES FROM GUMROAD ===================== -->
+      <section class="section" id="gumroad-prices">
+        <div class="wrap">
+          <div class="glass gumroad-prices rv">
+            <span class="kicker">Price source</span>
+            <h3>All prices from Gumroad</h3>
+            <p class="intro">3 products are live on Gumroad, and 1 more is drafted and publishing next. The live prices below were verified on Gumroad on 15 Nov 2026 from <a href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener" style="color:var(--emerald); font-weight:700;">nassarkhan.gumroad.com</a> and each product page. The Planner and its bundles are not on Gumroad yet — Coming Soon at the prices shown on their cards.</p>
+            <ul class="gumroad-list">
+              <li><span><b>Nexora Pro — React SaaS Dashboard Template (Standard Licence)</b> — 20 pages, use in ONE end product</span><span class="gp">$49 USD · <a href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">View on Gumroad</a></span></li>
+              <li><span><b>Nexora Pro — React SaaS Dashboard Template (Extended Licence)</b> — 20 pages, use in MULTIPLE end products and client projects</span><span class="gp">$149 USD · <a href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">View on Gumroad</a></span></li>
+              <li><span><b>Luxury Habit Tracker (PDF + App) — Daily &amp; Monthly Planner for Discipline</b> — 8-page printable PDF A4 + app</span><span class="gp">$5 USD · <a href="https://nassarkhan.gumroad.com/l/mljfk" target="_blank" rel="noopener">View on Gumroad</a></span></li>
+              <li><span><b>32 3D Website Prompts Ebook — Smooth, No Stutters, Highly Optimized</b> — 41-page A4 PDF, all 32 prompts in full · Gumroad listing ready — publishing next</span><span class="gp">$19 USD · Draft created on Gumroad 15 Nov 2026</span></li>
+            </ul>
+            <p class="source-note">Source: Gumroad store and product pages — Price verified on Gumroad — 15 Nov 2026 for the 3 live products; the ebook is a Gumroad draft created 15 Nov 2026 at $19. Nexora Lite is not on Gumroad — it is free on GitHub.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="wrap foot-in">
+        <div>
+          <a class="brand" href="#top" style="margin-right:0;">
+            <span class="brand-mark">NK</span>
+            <span><b>Nassar Khan</b><span>Digital Products</span></span>
+          </a>
+          <p>Premium SaaS dashboard templates and digital products by Nassar Uminallah Khan, Pakistan. All purchases are processed securely by Gumroad.</p>
+        </div>
+        <nav class="foot-links" aria-label="Products">
+          <span class="h">Live on Gumroad — prices verified 15 Nov 2026</span>
+          <a href="https://nassarkhan.gumroad.com/l/veuhx" target="_blank" rel="noopener">Nexora Pro — React SaaS Dashboard Template (Standard Licence) — $49</a>
+          <a href="https://nassarkhan.gumroad.com/l/satpd" target="_blank" rel="noopener">Nexora Pro — React SaaS Dashboard Template (Extended Licence) — $149</a>
+          <a href="https://nassarkhan.gumroad.com/l/mljfk" target="_blank" rel="noopener">Luxury Habit Tracker (PDF + App) — Daily &amp; Monthly Planner for Discipline — $5</a>
+          <a href="https://github.com/nassarkhan/nexora-saas-dashboard" target="_blank" rel="noopener">Nexora Lite — Not on Gumroad — Free on GitHub</a>
+        </nav>
+        <nav class="foot-links" aria-label="Explore">
+          <span class="h">Explore</span>
+          <a href="#featured">Featured</a>
+          <a href="#shop">All products</a>
+          <a href="#how">How buying works</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">Gumroad store ↗</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Mobile sticky bar -->
+    <div class="mobile-bar" role="navigation" aria-label="Quick actions">
+      <a class="btn btn-glass" href="#shop">Products</a>
+      <a class="btn btn-primary" href="https://nassarkhan.gumroad.com" target="_blank" rel="noopener">Gumroad store</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script>
+      (function () {
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* Mobile menu */
+        var menuBtn = document.getElementById("menuBtn");
+        var mobileMenu = document.getElementById("mobileMenu");
+        menuBtn.addEventListener("click", function () {
+          var open = mobileMenu.classList.toggle("open");
+          menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+        mobileMenu.addEventListener("click", function (e) {
+          if (e.target.closest("a")) {
+            mobileMenu.classList.remove("open");
+            menuBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        /* Lenis smooth scroll (lerp 0.12) + quantised blob parallax — one rAF loop */
+        var blobs = Array.prototype.slice.call(document.querySelectorAll(".blob"));
+        var lenis = null;
+        if (!reduceMotion && typeof window.Lenis === "function") {
+          lenis = new window.Lenis({ lerp: 0.12, smoothWheel: true });
+          var lastY = -1;
+          var rafLoop = function (time) {
+            lenis.raf(time);
+            var y = Math.round(window.scrollY / 6) * 6; /* quantised */
+            if (y !== lastY) {
+              lastY = y;
+              for (var i = 0; i < blobs.length; i++) {
+                var depth = parseFloat(blobs[i].getAttribute("data-depth")) || 0;
+                var ty = Math.round(y * depth / 100);
+                blobs[i].style.transform = "translate3d(0," + ty + "px,0)";
+              }
+            }
+            requestAnimationFrame(rafLoop);
+          };
+          requestAnimationFrame(rafLoop);
+        }
+
+        /* Category filter — shows one category section (or all) */
+        var filterBtns = Array.prototype.slice.call(document.querySelectorAll(".filter-btn"));
+        var catSections = Array.prototype.slice.call(document.querySelectorAll(".cat-section"));
+        filterBtns.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var f = btn.getAttribute("data-filter");
+            filterBtns.forEach(function (b) {
+              var on = b === btn;
+              b.classList.toggle("active", on);
+              b.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+            catSections.forEach(function (sec) {
+              sec.classList.toggle("hidden", f !== "all" && sec.getAttribute("data-category") !== f);
+            });
+          });
+        });
+        /* Category nav links always show every section again */
+        document.querySelectorAll('a[href^="#cat-"]').forEach(function (a) {
+          a.addEventListener("click", function () {
+            catSections.forEach(function (sec) { sec.classList.remove("hidden"); });
+            filterBtns.forEach(function (b) {
+              var on = b.getAttribute("data-filter") === "all";
+              b.classList.toggle("active", on);
+              b.setAttribute("aria-pressed", on ? "true" : "false");
+            });
+          });
+        });
+
+        /* Anchor navigation through Lenis when active */
+        document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+          a.addEventListener("click", function (e) {
+            var id = a.getAttribute("href");
+            if (id.length < 2) return;
+            var target = document.querySelector(id);
+            if (!target) return;
+            if (lenis) {
+              e.preventDefault();
+              lenis.scrollTo(target, { offset: -84, duration: 1.15 });
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
